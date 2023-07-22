@@ -78,6 +78,7 @@
   border: 2px solid black;
   padding: 16px 32px;
   font-size: 16px;
+  color: white;
 }
 
 .walletConnect {
@@ -221,6 +222,7 @@
 
 .header {
   text-align: center;
+  margin-top: 20px;
 }
 
 /* Tablet and Smaller Desktop */
