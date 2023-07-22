@@ -108,32 +108,10 @@ export default function App({ Component, pageProps }) {
 
   return (
     <div>
-      <h1>WalletConnect and Biconomy SDK</h1>
       <button onClick={account ? disconnectWallet : onConnect}>
         {account ? 'Disconnect Wallet' : 'Connect Wallet'}
       </button>
-
-      <div className="loadeoa">
-        {account && (
-          <div>
-            <h2>EOA Address</h2>
-            <p>{account}</p>
-          </div>
-        )}
-      </div>
-
       <Component {...pageProps} />
-
-      <div className="loadscw">
-        {scwAddress && (
-          <div>
-            <h2>Smart Account Address</h2>
-            <p>{scwAddress}</p>
-          </div>
-        )}
-
-        {scwLoading && <h2>Loading Smart Account...</h2>}
-      </div>
     </div>
   );
 }
