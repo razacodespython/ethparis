@@ -11,6 +11,7 @@ import {
 } from '@biconomy/paymaster'
 import abi from "../utils/abi.json";
 import styles from '@/styles/Home.module.css'
+import { Web3Button } from '@web3modal/react';
 
 const contractAddress = "0x61ec475c64c5042a6Cbb7763f89EcAe745fc8315";
 
@@ -125,16 +126,9 @@ useEffect(() => {
 }, [address, provider])
   return (
     <>
-      <Head>
-        <title>Climate Coin</title>
-        <meta name="description" content="Workshop for AA on Zkevm" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <main className={styles.main}>
-        <h1>Climate Coin</h1>
-        {address && <h2>Welcome {address}</h2>}
-        {!smartAccount && <button onClick={login} className={styles.connect}>Connect to Web3</button>}
+        <Web3Button />
+        {!smartAccount && <button onClick={login} className={styles.connect}>Sign In</button>}
         {smartAccount && <button onClick={logout} className={styles.connect}>Logout</button>}
       </main>
     </>
