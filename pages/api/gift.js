@@ -12,8 +12,25 @@ import {
   PaymasterMode,
   SponsorUserOperationDto, 
 } from '@biconomy/paymaster'
+import { nftAbi } from "@/component/nftAbi";
 
 export default function handler(req, res) {
+
+    console.log(req.body)
+    const address = req.body
+    const nftAddress = "0x91f11545c176Ca65C1D6156daA9AbA5Fb95f3C9d";
+    const provider = new ethers.providers.JsonRpcProvider('https://rpc.ankr.com/eth_goerli');
+    const nftContract = new ethers.Contract(nftAddress, nftAbi, provider);
+
+    nftContract.balanceOf(address).then((balance) => {
+      if (balance.gt(0)) {
+        console.log("The wallet owns the NFT");
+        mintToken()
+      } else {
+        console.log("The wallet does not own the NFT");
+      }
+    });
+  
 
 
 console.log("api received")
@@ -29,7 +46,7 @@ const paymaster = new BiconomyPaymaster({
   paymasterUrl: 'https://paymaster.biconomy.io/api/v1/5/CwOmZkBwy.d348fcae-7ecc-46c0-9839-6b6ba0eb2633' 
 })
 
-const provider = new providers.JsonRpcProvider("https://rpc.ankr.com/eth_goerli")
+//const provider = new providers.JsonRpcProvider("https://rpc.ankr.com/eth_goerli")
 const wallet = new Wallet(process.env.PRIVATE_KEY || "", provider);
 
 const biconomySmartAccountConfig = {
@@ -61,7 +78,7 @@ async function mintToken() {
 
   const data = nftInterface.encodeFunctionData("mint", [scwAddress, 10]);
 
-  const tokenAddress = "0xE8eC8043C0e5314887e6504004d08eC1364FfC52";
+  const tokenAddress = "0xb6b05Fb9F26cc590D25DD85Aa6f7D8f8d0Ead4Dd";
 
   const transaction = {
     to: tokenAddress,
@@ -97,6 +114,6 @@ async function mintToken() {
     }
   };
 
-  mintToken()
+  
   res.status(200).json({ name: 'John Doe' })
 }
