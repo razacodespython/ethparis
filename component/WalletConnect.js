@@ -11,8 +11,10 @@ import {
 } from "@biconomy/account";
 import { IPaymaster, BiconomyPaymaster } from "@biconomy/paymaster";
 import abi from "../utils/abi.json";
-import styles from "@/styles/Home.module.css";
 import { nftAbi } from "@/component/nftAbi";
+import { Web3Button } from "@web3modal/react";
+import styles from "@/styles/Home.module.css";
+import { useAccount } from "wagmi";
 
 const contractAddress = "0x61ec475c64c5042a6Cbb7763f89EcAe745fc8315";
 
@@ -32,9 +34,10 @@ export default function Home() {
   const sdkRef = useRef(null);
   const [loading, setLoading] = useState(false);
   const [provider, setProvider] = useState(null);
-  const [address, setAddress] = useState("");
+  const [biconomyAddress, setBiconomyAddress] = useState("");
   const [isFarmer, setIsFarmer] = useState(false);
   const [coinContract, setCoinContract] = useState(null);
+  const { address } = useAccount();
 
   useEffect(() => {
     let configureLogin;
@@ -92,7 +95,7 @@ export default function Home() {
         biconomySmartAccountConfig
       );
       biconomySmartAccount = await biconomySmartAccount.init();
-      setAddress(await biconomySmartAccount.getSmartAccountAddress());
+      setBiconomyAddress(await biconomySmartAccount.getSmartAccountAddress());
       setSmartAccount(biconomySmartAccount);
       setLoading(false);
     } catch (err) {
@@ -108,7 +111,7 @@ export default function Home() {
     await sdkRef.current.logout();
     sdkRef.current.hideWallet();
     setSmartAccount(null);
-    setAddress("");
+    setBiconomyAddress("");
     enableInterval(false);
   };
 
@@ -121,37 +124,33 @@ export default function Home() {
   };
 
   useEffect(() => {
-    if (address && provider) {
+    if (biconomyAddress && provider) {
       checkUserStatus();
     }
-  }, [address, provider]);
 
-  // check if wallet has the nft
-  const nftAddress = "0x91f11545c176Ca65C1D6156daA9AbA5Fb95f3C9d";
-  const nftContract = new ethers.Contract(nftAddress, nftAbi, provider);
+    // check if wallet has the nft
+    if (address) {
+      const nftAddress = "0x91f11545c176Ca65C1D6156daA9AbA5Fb95f3C9d";
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const nftContract = new ethers.Contract(nftAddress, nftAbi, provider);
 
-  nftContract.balanceOf(account).then((balance) => {
-    if (balance.gt(0)) {
-      console.log("The wallet owns the NFT");
-    } else {
-      console.log("The wallet does not own the NFT");
+      nftContract.balanceOf(address).then((balance) => {
+        if (balance.gt(0)) {
+          console.log("The wallet owns the NFT");
+        } else {
+          console.log("The wallet does not own the NFT");
+        }
+      });
     }
-  });
+  }, [biconomyAddress, provider, address]);
 
   return (
     <>
-      <Head>
-        <title>Climate Coin</title>
-        <meta name='description' content='Workshop for AA on Zkevm' />
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
-        <link rel='icon' href='/favicon.ico' />
-      </Head>
       <main className={styles.main}>
-        <h1>Climate Coin</h1>
-        {address && <h2>Welcome {address}</h2>}
+        <Web3Button />
         {!smartAccount && (
           <button onClick={login} className={styles.connect}>
-            Connect to Web3
+            Sign In
           </button>
         )}
         {smartAccount && (
