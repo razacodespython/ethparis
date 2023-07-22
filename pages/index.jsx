@@ -1,6 +1,7 @@
 import Card from "@/component/Card";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
+import { useAccount } from "wagmi";
 
 export default function Home() {
   const AppDynamic = dynamic(
@@ -13,17 +14,19 @@ export default function Home() {
     }
   );
 
+  const { address } = useAccount();
+
   const options = {
     method: "POST",
-    // headers: {
-    //   "content-type": "application/json"
-    // },
-    // body: JSON.stringify(message)
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(address),
   };
 
   const paymaster = async () => {
     console.log("clicked");
-    const response = await fetch("/api/paymaster", options);
+    const response = await fetch("/api/gift", options);
     const data = await response.json();
     console.log(data);
   };

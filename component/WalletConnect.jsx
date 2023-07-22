@@ -15,7 +15,7 @@ import {
 } from "@biconomy/paymaster";
 import abi from "../utils/abi.json";
 import { nftAbi } from "@/component/nftAbi";
-import { Web3Button } from "@web3modal/react";
+import { Web3Button, useWeb3Modal } from "@web3modal/react";
 import styles from "@/styles/Home.module.css";
 import { useAccount } from "wagmi";
 
@@ -45,6 +45,7 @@ export default function Home() {
   const [isFarmer, setIsFarmer] = useState(false);
   const [coinContract, setCoinContract] = useState(null);
   const { address } = useAccount();
+  const { open, close } = useWeb3Modal();
 
   useEffect(() => {
     let configureLogin;
@@ -171,18 +172,21 @@ export default function Home() {
   }, [biconomyAddress, provider, address]);
 
   return (
-    <main className={styles.ctas}>
-      {!smartAccount && (
-        <button onClick={login} className={styles.connect}>
-          Sign In
+    <>
+      <main className={styles.main}>
+        {smartAccount ? (
+          <button onClick={logout} className={styles.connect}>
+            Logout
+          </button>
+        ) : (
+          <button onClick={login} className={styles.connect}>
+            Sign in with email
+          </button>
+        )}
+        <button className={styles.walletConnect} onClick={() => open()}>
+          Connect Wallet
         </button>
-      )}
-      {smartAccount && (
-        <button onClick={logout} className={styles.connect}>
-          Logout
-        </button>
-      )}
-      <Web3Button />
-    </main>
+      </main>
+    </>
   );
 }
