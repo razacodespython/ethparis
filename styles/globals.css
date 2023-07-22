@@ -67,6 +67,10 @@ h1 {
   font-family: var(--font-press-start), cursive;
 }
 
+button {
+  font-family: var(--font-inter), sans-serif;
+}
+
 a {
   color: inherit;
   text-decoration: none;
