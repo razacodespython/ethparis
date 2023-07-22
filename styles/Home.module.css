@@ -1,10 +1,10 @@
 .main {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 6rem;
   min-height: 100vh;
+  width: 400px;
 }
 
 .description {
@@ -72,6 +72,23 @@
   max-width: 30ch;
 }
 
+.connect {
+  background-color: black;
+  border-radius: 30px;
+  border: 2px solid black;
+  padding: 16px 32px;
+  font-size: 16px;
+}
+
+.walletConnect {
+  background-color: white;
+  border-radius: 30px;
+  border: 1px solid black;
+  padding: 16px 32px;
+  color: black;
+  font-size: 16px;
+}
+
 .center {
   display: flex;
   justify-content: center;
@@ -97,7 +114,7 @@
 
 .center::before,
 .center::after {
-  content: '';
+  content: "";
   left: 50%;
   position: absolute;
   filter: blur(45px);

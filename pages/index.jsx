@@ -3,7 +3,6 @@ import { Suspense } from "react";
 import { useAccount } from "wagmi";
 
 export default function Home() {
-
   const AppDynamic = dynamic(
     () => import("../component/WalletConnect").then((res) => res.default),
     {
@@ -16,23 +15,23 @@ export default function Home() {
   const options = {
     method: "POST",
     headers: {
-      "content-type": "application/json"
+      "content-type": "application/json",
     },
-    body: JSON.stringify(address)
-  }
+    body: JSON.stringify(address),
+  };
 
-  const paymaster = async() =>{
+  const paymaster = async () => {
     console.log("clicked");
-    const response = await fetch("/api/gift",options);
+    const response = await fetch("/api/gift", options);
     const data = await response.json();
-    console.log(data)
-  }
+    console.log(data);
+  };
   return (
     <>
       <Suspense fallback={<div>Loading...</div>}>
-          <AppDynamic />
-          <button onClick={paymaster}>paymaster trigger</button>
+        <AppDynamic />
+        <button onClick={paymaster}>paymaster trigger</button>
       </Suspense>
     </>
-  )
+  );
 }
