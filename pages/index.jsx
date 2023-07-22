@@ -1,7 +1,6 @@
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import { useAccount } from "wagmi";
-import Sidebar from "../component/sidebar";
 
 export default function Home() {
   const AppDynamic = dynamic(
@@ -30,8 +29,7 @@ export default function Home() {
   return (
     <>
       <Suspense fallback={<div>Loading...</div>}>
-        {/* <AppDynamic /> */}
-        <Sidebar />
+        <AppDynamic />
         <button onClick={paymaster}>paymaster trigger</button>
       </Suspense>
     </>
