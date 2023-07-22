@@ -1,18 +1,16 @@
-export const CheckWalletNFT = `query CheckWalletNFT {
+export const CheckWalletNFT = `query CheckWalletNFT($tokenAddress: Address!, $walletAddress: Identity!) {
   TokenBalance(
-    input: {blockchain: ethereum, owner: "vitalik.eth", tokenAddress: "0x123456789abcdef", tokenId: "1"}
+    input: {blockchain: polygon, tokenAddress: $tokenAddress, owner: $walletAddress}
   ) {
     id
     tokenAddress
-    tokenId
     owner {
-      identity
       addresses
     }
     tokenNfts {
-      id
       address
       tokenId
     }
   }
-}`;
+}
+`;

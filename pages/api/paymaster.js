@@ -14,7 +14,7 @@ import {
 } from '@biconomy/paymaster'
 
 export default function handler(req, res) {
-
+console.log("api received")
 config()
 
 const bundler= new Bundler({
@@ -51,13 +51,13 @@ async function createAccount() {
 async function mintNFT() {
   const smartAccount = await createAccount();
 
-  // const nftInterface = new ethers.utils.Interface([
-  //   "function safeMint(address to, uint256 tokenId)",
-  // ]);
+  const nftInterface = new ethers.utils.Interface([
+    "function safeMint(address to, uint256 tokenId)",
+  ]);
 
   const scwAddress = await smartAccount.getSmartAccountAddress();
 
-  const data = nftInterface.encodeFunctionData("safeMint", [scwAddress, 420]);
+  const data = nftInterface.encodeFunctionData("safeMint", [scwAddress, 10]);
 
   const nftAddress = "0x91f11545c176Ca65C1D6156daA9AbA5Fb95f3C9d";
 
