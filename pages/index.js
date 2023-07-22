@@ -1,6 +1,14 @@
-
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
 
 export default function Home() {
+
+  const AppDynamic = dynamic(
+    () => import("../component/WalletConnect").then((res) => res.default),
+    {
+      ssr: false,
+    }
+  );
 
   const options = {
     method: "POST",
@@ -18,7 +26,10 @@ export default function Home() {
   }
   return (
     <>
-      <button onClick={paymaster}>paymaster trigger</button>
+      <Suspense fallback={<div>Loading...</div>}>
+          <AppDynamic />
+          <button onClick={paymaster}>paymaster trigger</button>
+      </Suspense>
     </>
   )
 }
