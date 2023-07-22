@@ -25,11 +25,11 @@ export default function Home() {
     console.log(data)
   }
   return (
-    <>
+    <main className="home-page">
       <Suspense fallback={<div>Loading...</div>}>
           <AppDynamic />
           <button onClick={paymaster}>paymaster trigger</button>
       </Suspense>
-    </>
+    </main>
   )
 }

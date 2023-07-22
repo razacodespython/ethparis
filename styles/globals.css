@@ -111,10 +111,21 @@ a {
   }
 }
 
+.wrapper {
+  width: 100%;
+  max-width: 1440px;
+  padding: 0 16px;
+  height: auto;
+}
+
 /* Navbar Styles */
 
 .navbar {
   width: 100vw;
   height: auto;
   background-color: #fff;
+}
+
+.navbar > .wrapper > .logo {
+  color: black;
 }
