@@ -1,0 +1,22 @@
+.rectangles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .rectangle {
+    width: 150px;
+    height: 150px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 6px; /* Rounded corners */
+    border: 1px solid #ccc; /* Gray border */
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .rectangle.with-image {
+    cursor: pointer;
+  }
+  
