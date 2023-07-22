@@ -27,7 +27,7 @@ export default function App({ Component, pageProps }) {
   useEffect(() => {
     async function onInitializeProviderClient() {
       const client = await EthereumProvider.init({
-        projectId: NEXT_PUBLIC_PROJECT_ID,
+        projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
         showQrModal: true,
         qrModalOptions: { themeMode: 'light' },
         chains: [1],
