@@ -1,3 +1,4 @@
+import Header from "@/component/Header";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import { useAccount } from "wagmi";
@@ -30,6 +31,7 @@ export default function Home() {
   return (
     <>
       <Suspense fallback={<div>Loading...</div>}>
+          <Header />
           <AppDynamic />
           <button onClick={paymaster}>paymaster trigger</button>
       </Suspense>
