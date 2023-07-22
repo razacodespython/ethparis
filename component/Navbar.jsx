@@ -5,7 +5,7 @@ import styles from "../styles/Navbar.module.css"
 export default function Navbar() {
 
   return (
-    <nav className={styles.navbar}>
+    <nav className='navbar'>
       <div className="wrapper">
         <div className="logo">WALA</div>
         <div className="menu-button"></div>

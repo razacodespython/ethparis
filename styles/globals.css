@@ -106,4 +106,10 @@ a {
   }
 }
 
-// Navbar
+/* Navbar Styles */
+
+.navbar {
+  width: 100vw;
+  height: auto;
+  background-color: #fff;
+}
