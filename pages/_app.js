@@ -6,8 +6,6 @@ import { BiconomySmartAccount, BiconomySmartAccountConfig, DEFAULT_ENTRYPOINT_AD
 import { EthereumProvider } from '@walletconnect/ethereum-provider';
 import { ethers } from 'ethers';
 
-const NEXT_PUBLIC_PROJECT_ID = 'f8e5bc7c8cb6b3672f2dbb7499383542';
-
 const bundler = new Bundler({
   bundlerUrl: 'https://bundler.biconomy.io/api/v2/80001/abc', // you can get this value from the Biconomy dashboard.
   chainId: ChainId.POLYGON_MUMBAI,
