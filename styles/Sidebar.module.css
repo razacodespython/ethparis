@@ -1,0 +1,22 @@
+.main {
+  width: 100px;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  background-color: #ffffff;
+  border-right: 2px solid #e4e4e7;
+  margin-top: 75px;
+  padding-top: 20px;
+}
+
+.icon {
+  margin: 10px;
+}
+
+.activeIcon {
+  margin: 10px;
+  border: 2px solid #000;
+}
