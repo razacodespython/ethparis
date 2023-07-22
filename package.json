@@ -16,6 +16,7 @@
     "@biconomy/core-types": "^3.0.0-alpha.0",
     "@biconomy/paymaster": "^3.0.0-alpha.0",
     "@biconomy/web3-auth": "^3.0.0-alpha.0",
+    "@next/font": "^13.4.12",
     "@web3modal/ethereum": "^2.7.0",
     "@web3modal/react": "^2.7.0",
     "@xmtp/xmtp-js": "^9.4.0-beta.1",
