@@ -1,7 +1,7 @@
-import {Bar, Line, Scatter, Bubble} from "react-chartjs-2";
 import style from "../styles/Dashboard.module.css";
 import Sidebar from "@/component/sidebar";
 import Header from "@/component/Header";
+import Image from "next/image";
 
 export default function Dashboard() {
     const giftCardsClaimed = 420;
@@ -25,6 +25,13 @@ export default function Dashboard() {
                 <h2>Daily Usage</h2>
                 <p>{dailyUsage}</p>
             </div>
+        </div>
+        <div className={style.chart}>
+            <Image 
+                src="/assets/linechart.png" 
+                alt="line chart" 
+                layout='fill'
+                objectFit='contain' />
         </div>
         </>
     );
