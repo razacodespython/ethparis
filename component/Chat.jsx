@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './Chat.module.css';
+import styles from '../styles/Chat.module.css';
 
 const dummyData = [
   { id: 1, user: '0xabc...', message: 'Hello!', timestamp: new Date() },

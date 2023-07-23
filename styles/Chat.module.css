@@ -43,4 +43,14 @@
     font-size: 0.8em;
     color: #888;
   }
+
+  .header {
+    display: flex;
+    justify-content: left;
+    padding: auto;
+    margin-left: 150px;;
+    margin-bottom: 10px;
+    margin-top: 120px;
+    font-family: var(--font-inter), sans-serif;
+  }
   
