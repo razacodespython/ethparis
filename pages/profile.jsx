@@ -2,10 +2,11 @@ import { useState } from "react";
 import Sidebar from "../component/sidebar";
 import Header from "../component/Header";
 import styles from "@/styles/Profile.module.css";
+import { useAccount, useDisconnect } from "wagmi";
 
 export default function Profile() {
   const [selectedImage, setSelectedImage] = useState();
-
+  const { address, isConnected } = useAccount();
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     setSelectedImage(URL.createObjectURL(file));
@@ -21,10 +22,12 @@ export default function Profile() {
  
   const paymaster = async() =>{
     console.log("clicked paymaster");
-    const response = await fetch("/api/polypaymaster",options);
-    const data = await response.json();
+    const response = await fetch("/api/paymaster",options);
+    const data = await response;
     console.log(data)
   }
+
+  
 
   return (
     <>
@@ -49,21 +52,22 @@ export default function Profile() {
               <img src={selectedImage} alt='Selected' height={200} />
             )}
           </div>
-          <div className={styles.inputHeader}>Company Name</div>
+          <div className={styles.inputHeader}>Name</div>
           <input
             type='text'
             required
             className={styles.inputSearch}
-            placeholder='Company Name'
+            placeholder='Name'
           />
-          <div className={styles.inputHeader}>Email</div>
+          <div className={styles.inputHeader}>Username</div>
           <input
             type='text'
             required
             className={styles.inputSearch}
-            placeholder='Email'
+            placeholder='username'
           />
           <button className={styles.saveButton} onClick={paymaster}>Collect Giftcard</button>
+         
         </div>
       </div>
     </>

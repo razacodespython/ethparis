@@ -3,8 +3,10 @@ import styles from "../styles/Marketplace.module.css";
 import Image from "next/image";
 import Sidebar from "../component/sidebar";
 import Header from "../component/Header";
+import { useAccount, useDisconnect } from "wagmi";
 
 export default function Marketplace() {
+  const { address, isConnected } = useAccount();
   const [selectedImage, setSelectedImage] = useState(null);
 
   // Function to handle image click and set the selected image
@@ -18,8 +20,8 @@ export default function Marketplace() {
 
   const gift = async() =>{
     console.log("clicked gift");
-    const response = await fetch("/api/polygift",options);
-    const data = await response.json();
+    const response = await fetch("/api/gift",options);
+    const data = await response
     console.log(data)
   }
  

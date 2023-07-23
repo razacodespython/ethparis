@@ -128,26 +128,26 @@ export default function Home() {
     setIsFarmer(isAFarmer);
   };
 
-  useEffect(() => {
-    if (biconomyAddress && provider) {
-      checkUserStatus();
-    }
+  // useEffect(() => {
+  //   if (biconomyAddress && provider) {
+  //     checkUserStatus();
+  //   }
 
     // check if wallet has the nft
-    if (address) {
-      const nftAddress = "0x91f11545c176Ca65C1D6156daA9AbA5Fb95f3C9d";
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const nftContract = new ethers.Contract(nftAddress, nftAbi, provider);
+  //   if (address) {
+  //     const nftAddress = "0x91f11545c176Ca65C1D6156daA9AbA5Fb95f3C9d";
+  //     const provider = new ethers.providers.Web3Provider(window.ethereum);
+  //     const nftContract = new ethers.Contract(nftAddress, nftAbi, provider);
 
-      nftContract.balanceOf(address).then((balance) => {
-        if (balance.gt(0)) {
-          console.log("The wallet owns the NFT");
-        } else {
-          console.log("The wallet does not own the NFT");
-        }
-      });
-    }
-  }, [biconomyAddress, provider, address]);
+  //     nftContract.balanceOf(address).then((balance) => {
+  //       if (balance.gt(0)) {
+  //         console.log("The wallet owns the NFT");
+  //       } else {
+  //         console.log("The wallet does not own the NFT");
+  //       }
+  //     });
+  //   }
+  // }, [biconomyAddress, provider, address]);
 
   const onClickModal = () => {
     if (isConnected) {

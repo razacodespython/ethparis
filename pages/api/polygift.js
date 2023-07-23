@@ -13,32 +13,33 @@ import {
   SponsorUserOperationDto, 
 } from '@biconomy/paymaster'
 import { nftAbi } from "@/component/nftAbi";
+import { Client } from "@xmtp/xmtp-js";
 
-export default function handler(req, res) {
-  const xmtp =  Client.create(signer, { env: "dev" });
-  const conv =  xmtp.conversations.newConversation(
-    address,
-  );
-
+export default async function handler(req, res) {
 
     console.log(req.body)
     const address = req.body
     const nftAddress = "0x5c7f6e9cb9c277656e47126750c7f5e958e46d2e";
-    const provider = new ethers.providers.JsonRpcProvider('https://polygon-zkevm-mainnet.gateway.pokt.network/v1/lb/62b7250d123e6f0039842a28');
+    const provider = await new ethers.providers.JsonRpcProvider('https://polygon-zkevm-mainnet.gateway.pokt.network/v1/lb/62b7250d123e6f0039842a28');
     const nftContract = new ethers.Contract(nftAddress, nftAbi, provider);
 
-    nftContract.balanceOf(address).then((balance) => {
+
+    await nftContract.balanceOf(address).then((balance) => {
       if (balance.gt(0)) {
         console.log("The wallet owns the NFT");
         mintToken()
-        const message = conv.send("Hi! Congratulations owning a Wala Gift Card. You can now use popular dApps without spending money or annoying steps!");
+        // const message = conv.send("Hi! Congratulations owning a Wala Gift Card. You can now use popular dApps without spending money or annoying steps!");
         console.log(message);
       } else {
         console.log("The wallet does not own the NFT");
       }
     });
-  
 
+  
+    // const xmtp =  Client.create(signer, { env: "dev" });
+    // const conv =  xmtp.conversations.newConversation(
+    //   address,
+    // );
 
 console.log("api received")
 config()
