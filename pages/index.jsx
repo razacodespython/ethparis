@@ -1,6 +1,8 @@
+import Header from "@/component/Header";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import { useAccount } from "wagmi";
+import style from "../styles/Home.module.css";
 
 export default function Home() {
   const AppDynamic = dynamic(
@@ -29,8 +31,9 @@ export default function Home() {
   return (
     <>
       <Suspense fallback={<div>Loading...</div>}>
-        <AppDynamic />
-        <button onClick={paymaster}>paymaster trigger</button>
+          <h1 className={style.header}>Wala</h1>
+          <AppDynamic />
+          <button onClick={paymaster}>paymaster trigger</button>
       </Suspense>
     </>
   );
