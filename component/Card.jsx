@@ -3,7 +3,7 @@ export default function Card() {
     <div className="card">
       <div className="text-container">
         <div className="title">
-          <h4>Fueling Loyalty</h4>
+          <h4>Loyalty Gift Card</h4>
           <div className="company-logo"></div>
         </div>
         <div className="description">

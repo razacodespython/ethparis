@@ -14,13 +14,8 @@ body {
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: black;
+  background-color: white;
   font-family: var(--font-inter), sans-serif;
   min-height: 100vh;
 }
@@ -34,8 +29,19 @@ h6 {
   font-family: var(--font-press-start), cursive;
 }
 
+p {
+  font-family: var(--font-inter), sans-serif;
+}
+
 button {
   font-family: var(--font-inter), sans-serif;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.75;
+  filter: brightness(1.1);
+  transition: all 0.2s ease-in-out;
 }
 
 a {
@@ -65,6 +71,19 @@ section {
   max-width: 1440px;
   padding: 0 16px;
   height: auto;
+}
+
+.connect-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+@media (max-width: 400px) {
+  .connect-container {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 /* Hero Section */
@@ -109,6 +128,15 @@ section.hero-section
   font-size: clamp(2.5rem, 5vw, 4rem);
   max-width: 10ch;
   margin-bottom: 1.5rem;
+}
+
+section.hero-section
+  > .wrapper
+  > .header
+  > .left-container
+  > p {
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  max-width: 10ch;
 }
 
 section.hero-section
@@ -176,10 +204,15 @@ section.hero-section
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  background-color: blue;
+  background-color: #f4f4f5;
   border-radius: 28px;
   border: 3px solid black;
+
   padding: 40px;
+
+  /* shadow/lg */
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.12),
+    0px 4px 6px -2px rgba(0, 0, 0, 0.08);
 }
 
 .card > .text-container {

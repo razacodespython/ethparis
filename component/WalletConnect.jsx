@@ -172,21 +172,22 @@ export default function Home() {
   }, [biconomyAddress, provider, address]);
 
   return (
-    <>
-      <main className={styles.main}>
-        {smartAccount ? (
-          <button onClick={logout} className={styles.connect}>
-            Logout
-          </button>
-        ) : (
-          <button onClick={login} className={styles.connect}>
-            Sign in with email
-          </button>
-        )}
-        <button className={styles.walletConnect} onClick={() => open()}>
-          Connect Wallet
+    <div className='connect-container'>
+      {smartAccount ? (
+        <button onClick={logout} className={styles.connect}>
+          Logout
         </button>
-      </main>
-    </>
+      ) : (
+        <button onClick={login} className={styles.connect}>
+          Sign in with email
+        </button>
+      )}
+      <button
+        className={styles.walletConnect}
+        onClick={() => open()}
+      >
+        Connect Wallet
+      </button>
+    </div>
   );
 }
