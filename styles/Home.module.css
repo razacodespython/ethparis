@@ -84,6 +84,7 @@
   padding: 12px 24px;
   font-size: 1rem;
   box-shadow: -10px 4px black;
+  color: white;
 }
 
 .walletConnect {
@@ -256,4 +257,14 @@
   to {
     transform: rotate(0deg);
   }
+}
+
+.title {
+  display: flex;
+  font-family: var(--font-press-start), cursive;
+}
+
+.logo {
+  border-radius: 5px;
+  margin-left: 10px;
 }

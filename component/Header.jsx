@@ -8,13 +8,13 @@ export default function Header() {
   const router = useRouter();
 
   const logout = async () => {
+    router.push("/");
     if (!sdkRef.current) {
       console.error("Web3Modal not initialized.");
       return;
     }
     await sdkRef.current.logout();
     sdkRef.current.hideWallet();
-    router.push("/");
   };
 
   return (
