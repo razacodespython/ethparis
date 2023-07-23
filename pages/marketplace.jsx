@@ -8,9 +8,21 @@ export default function Marketplace() {
   const [selectedImage, setSelectedImage] = useState(null);
 
   // Function to handle image click and set the selected image
-  const handleCollectClick = () => {
-    mintNFT();
+  const options = {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(address),
   };
+
+  const gift = async() =>{
+    console.log("clicked gift");
+    const response = await fetch("/api/polygift",options);
+    const data = await response.json();
+    console.log(data)
+  }
+ 
 
   // Function to handle click away and close the selected image
   const handleClickAway = () => {
@@ -30,7 +42,7 @@ export default function Marketplace() {
               className={styles.rectangle}
               style={{ backgroundImage: `url('/assets/Bear.png')` }}
             >
-              <button onClick={(event) => handleCollectClick(event, "")}>Collect</button>
+              <button onClick={gift}>Collect</button>
             </div>
             <div
               className={styles.rectangle}

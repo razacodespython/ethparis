@@ -24,7 +24,7 @@ export default function handler(req, res) {
     console.log(req.body)
     const address = req.body
     const nftAddress = "0x91f11545c176Ca65C1D6156daA9AbA5Fb95f3C9d";
-    const provider = new ethers.providers.JsonRpcProvider('https://rpc.ankr.com/eth_goerli');
+    const provider = new ethers.providers.JsonRpcProvider('https://linea-goerli.infura.io/v3/');
     const nftContract = new ethers.Contract(nftAddress, nftAbi, provider);
 
     nftContract.balanceOf(address).then((balance) => {
