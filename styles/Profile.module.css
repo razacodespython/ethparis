@@ -9,15 +9,22 @@
 
 .profile {
   margin-left: 160px;
-  padding-top: 120px;
+  padding-top: 100px;
 }
 
 .heading {
   margin-left: 60px;
-  margin-top: 40px;
+  padding-top: 40px;
+  padding-bottom: 40px;
   display: flex;
   justify-content: space-between;
   align-content: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 95px;
+  z-index: 1;
+  background-color: white;
 }
 
 .walletConnect {
@@ -35,6 +42,7 @@
   font-size: 30px;
   margin-bottom: 20px;
   color: black;
+  font-family: var(--font-inter), sans-serif;
 }
 
 .inputHeader {
