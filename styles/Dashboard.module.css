@@ -1,0 +1,35 @@
+/* styles/Dashboard.css */
+.dashboard {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 120px;
+    margin-right: 20px;
+}
+
+.dataRect {
+    flex: 1;
+    border: 1px solid #ddd;
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-top: 100px;
+}
+
+.dataRect h2 {
+    color: #333;
+    font-size: 24px;
+}
+
+.dataRect p {
+    color: #666;
+    font-size: 20px;
+}
+
+.chart {
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    margin-left: 160px;
+}

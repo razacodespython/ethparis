@@ -1,10 +1,15 @@
-.main {
+/* .main {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 6rem;
   min-height: 100vh;
+  width: 400px;
+} */
+
+.heroHeader {
+  text-align: center;
+  margin-top: 40px;
 }
 
 .description {
@@ -72,6 +77,36 @@
   max-width: 30ch;
 }
 
+.connect {
+  background-color: black;
+  border-radius: 30px;
+  border: 2px solid black;
+  padding: 12px 24px;
+  font-size: 1rem;
+  box-shadow: -10px 4px black;
+}
+
+.walletConnect {
+  background-color: white;
+  border-radius: 30px;
+  border: 1px solid black;
+  color: black;
+  font-size: 16px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  box-shadow: -10px 4px black;
+}
+
+.connect:hover {
+  box-shadow: none;
+  transform: translate(-10px, 4px);
+}
+
+.walletConnect:hover {
+  box-shadow: none;
+  transform: translate(-10px, 4px);
+}
+
 .center {
   display: flex;
   justify-content: center;
@@ -97,7 +132,7 @@
 
 .center::before,
 .center::after {
-  content: '';
+  content: "";
   left: 50%;
   position: absolute;
   filter: blur(45px);
@@ -202,20 +237,15 @@
   }
 }
 
+.header {
+  text-align: center;
+  margin-top: 20px;
+}
+
 /* Tablet and Smaller Desktop */
 @media (min-width: 701px) and (max-width: 1120px) {
   .grid {
     grid-template-columns: repeat(2, 50%);
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .vercelLogo {
-    filter: invert(1);
-  }
-
-  .logo {
-    filter: invert(1) drop-shadow(0 0 0.3rem #ffffff70);
   }
 }
 
