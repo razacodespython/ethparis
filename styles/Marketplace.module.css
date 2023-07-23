@@ -21,9 +21,9 @@
 
 .containerGrid {
   display: grid;
-  grid-template-columns: repeat(2, 350px); /* 2 columns of 350px each */
-  grid-template-rows: repeat(3, 350px); /* 3 rows of 350px each */
-  gap: 10px; /* Gap between rectangles */
+  grid-template-columns: repeat(3, 350px); /* 2 columns of 350px each */
+  grid-template-rows: repeat(2, 350px); /* 3 rows of 350px each */
+  gap: 50px; /* Gap between rectangles */
   justify-content: center;
   margin-top: 30px;
 }
@@ -37,6 +37,15 @@
   object-fit: cover;
   background-size: cover;
   background-position: center;
+}
+
+.collectButton {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  cursor: pointer;
 }
 
 /* Media Query for Mobile Devices (max-width: 767px) */

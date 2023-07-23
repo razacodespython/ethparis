@@ -26,36 +26,48 @@ export default function Marketplace() {
           <h2 className={styles.header}>Marketplace</h2>
           <p className={styles.header}>Use your gift cards within this app.</p>
           <div className={styles.containerGrid}>
-            <div
+          <div
               className={styles.rectangle}
-              onClick={() => handleImageClick("/assets/aave.jpeg")}
-              style={{ backgroundImage: `url('/assets/aave.jpeg')` }}
-            />
-            <div
-              className={styles.rectangle}
-              onClick={() => handleImageClick("/assets/apecoin.jpeg")}
-              style={{ backgroundImage: `url('/assets/apecoin.jpeg')` }}
-            />
-            <div
-              className={styles.rectangle}
-              onClick={() => handleImageClick("/assets/uniswap.png")}
-              style={{ backgroundImage: `url('/assets/uniswap.png')` }}
-            />
-            <div
-              className={styles.rectangle}
-              onClick={() => handleImageClick("/assets/aave.jpeg")}
-              style={{ backgroundImage: `url('/assets/aave.jpeg')` }}
-            />
+              onClick={() => handleImageClick("/assets/Bear.png")}
+              style={{ backgroundImage: `url('/assets/Bear.png')` }}
+            >
+              <button onClick={(event) => handleCollectClick(event, "")}>Collect</button>
+            </div>
             <div
               className={styles.rectangle}
               onClick={() => handleImageClick("/assets/apecoin.jpeg")}
               style={{ backgroundImage: `url('/assets/apecoin.jpeg')` }}
-            />
+            >
+              <button onClick={(event) => handleCollectClick(event, "/assets/apecoin.jpeg")}>Buy</button>
+            </div>
             <div
               className={styles.rectangle}
               onClick={() => handleImageClick("/assets/uniswap.png")}
               style={{ backgroundImage: `url('/assets/uniswap.png')` }}
-            />
+            >
+              <button onClick={(event) => handleCollectClick(event, "/assets/uniswap.png")}>Swap</button>
+            </div>
+            <div
+              className={styles.rectangle}
+              onClick={() => handleImageClick("/assets/aave.jpeg")}
+              style={{ backgroundImage: `url('/assets/aave.jpeg')` }}
+            >
+              <button onClick={(event) => handleCollectClick(event, "/assets/aave.jpeg")}>Collect</button>
+            </div>
+            <div
+              className={styles.rectangle}
+              onClick={() => handleImageClick("/assets/apecoin.jpeg")}
+              style={{ backgroundImage: `url('/assets/apecoin.jpeg')` }}
+            >
+              <button onClick={(event) => handleCollectClick(event, "/assets/apecoin.jpeg")}>Collect</button>
+            </div>
+            <div
+              className={styles.rectangle}
+              onClick={() => handleImageClick("/assets/uniswap.png")}
+              style={{ backgroundImage: `url('/assets/uniswap.png')` }}
+            >
+              <button onClick={(event) => handleCollectClick(event, "/assets/uniswap.png")}>Collect</button>
+            </div>
           </div>
         </div>
       </div>
