@@ -67,6 +67,10 @@ h1 {
   font-family: var(--font-press-start), cursive;
 }
 
+h2, h3, h4, h5, p {
+  font-family: var(--font-inter), sans-serif;
+}
+
 button {
   font-family: var(--font-inter), sans-serif;
 }
