@@ -1,11 +1,11 @@
-.main {
+/* .main {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   min-height: 100vh;
   width: 400px;
-}
+} */
 
 .description {
   display: inherit;
@@ -76,17 +76,18 @@
   background-color: black;
   border-radius: 30px;
   border: 2px solid black;
-  padding: 16px 32px;
-  font-size: 16px;
+  padding: 12px 24px;
+  font-size: 1rem;
 }
 
 .walletConnect {
   background-color: white;
   border-radius: 30px;
   border: 1px solid black;
-  padding: 16px 32px;
   color: black;
   font-size: 16px;
+  padding: 12px 24px;
+  font-size: 1rem;
 }
 
 .center {
@@ -217,6 +218,11 @@
     );
     z-index: 1;
   }
+}
+
+.header {
+  text-align: center;
+  margin-top: 20px;
 }
 
 /* Tablet and Smaller Desktop */
