@@ -15,6 +15,7 @@ import { nftAbi } from "@/component/nftAbi";
 import { Web3Button, useWeb3Modal } from "@web3modal/react";
 import styles from "@/styles/Home.module.css";
 import { useAccount, useDisconnect } from "wagmi";
+import { useRouter } from "next/router";
 
 const contractAddress = "0x61ec475c64c5042a6Cbb7763f89EcAe745fc8315";
 
@@ -40,6 +41,7 @@ export default function Home() {
   const { address, isConnected } = useAccount();
   const { open, close } = useWeb3Modal();
   const { disconnect } = useDisconnect();
+  const router = useRouter();
 
   useEffect(() => {
     let configureLogin;
@@ -100,6 +102,7 @@ export default function Home() {
       setBiconomyAddress(await biconomySmartAccount.getSmartAccountAddress());
       setSmartAccount(biconomySmartAccount);
       setLoading(false);
+      router.push("/profile");
     } catch (err) {
       console.log("error setting up smart account... ", err);
     }

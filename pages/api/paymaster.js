@@ -12,8 +12,10 @@ import {
   PaymasterMode,
   SponsorUserOperationDto, 
 } from '@biconomy/paymaster'
+import { Client } from "@xmtp/xmtp-js";
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
+const address = req.body
 console.log("api received")
 config()
 
@@ -96,5 +98,13 @@ async function mintNFT() {
   };
 
   mintNFT()
-  res.status(200).json({ name: 'John Doe' })
+
+  const xmtp = await Client.create(signer, { env: "dev" });
+  const conv = await xmtp.conversations.newConversation(
+    address,
+  );
+  const message = await conv.send("Hi! Congratulations owning a Wala Gift Card. You can now use popular dApps without spending money or annoying steps!");
+  console.log(message);
+    
+  res.status(200).json({ name: message })
 }
