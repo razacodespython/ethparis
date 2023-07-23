@@ -7,6 +7,11 @@
   width: 400px;
 } */
 
+.heroHeader {
+  text-align: center;
+  margin-top: 40px;
+}
+
 .description {
   display: inherit;
   justify-content: inherit;
@@ -78,6 +83,7 @@
   border: 2px solid black;
   padding: 12px 24px;
   font-size: 1rem;
+  box-shadow: -10px 4px black;
 }
 
 .walletConnect {
@@ -88,6 +94,17 @@
   font-size: 16px;
   padding: 12px 24px;
   font-size: 1rem;
+  box-shadow: -10px 4px black;
+}
+
+.connect:hover {
+  box-shadow: none;
+  transform: translate(-10px, 4px);
+}
+
+.walletConnect:hover {
+  box-shadow: none;
+  transform: translate(-10px, 4px);
 }
 
 .center {

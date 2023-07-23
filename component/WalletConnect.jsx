@@ -9,29 +9,23 @@ import {
   BiconomySmartAccountConfig,
   DEFAULT_ENTRYPOINT_ADDRESS,
 } from "@biconomy/account";
-import {
-  IPaymaster,
-  BiconomyPaymaster,
-} from "@biconomy/paymaster";
+import { IPaymaster, BiconomyPaymaster } from "@biconomy/paymaster";
 import abi from "../utils/abi.json";
 import { nftAbi } from "@/component/nftAbi";
 import { Web3Button, useWeb3Modal } from "@web3modal/react";
 import styles from "@/styles/Home.module.css";
-import { useAccount } from "wagmi";
+import { useAccount, useDisconnect } from "wagmi";
 
-const contractAddress =
-  "0x61ec475c64c5042a6Cbb7763f89EcAe745fc8315";
+const contractAddress = "0x61ec475c64c5042a6Cbb7763f89EcAe745fc8315";
 
 const bundler = new Bundler({
-  bundlerUrl:
-    "https://bundler.biconomy.io/api/v2/80001/abc", // you can get this value from biconomy dashboard.
+  bundlerUrl: "https://bundler.biconomy.io/api/v2/80001/abc", // you can get this value from biconomy dashboard.
   chainId: ChainId.POLYGON_MUMBAI,
   entryPointAddress: DEFAULT_ENTRYPOINT_ADDRESS,
 });
 
 const paymaster = new BiconomyPaymaster({
-  paymasterUrl:
-    process.env.NEXT_PUBLIC_BICONOMY_PAYMASTER_URL || "",
+  paymasterUrl: process.env.NEXT_PUBLIC_BICONOMY_PAYMASTER_URL || "",
 });
 
 export default function Home() {
@@ -40,12 +34,12 @@ export default function Home() {
   const sdkRef = useRef(null);
   const [loading, setLoading] = useState(false);
   const [provider, setProvider] = useState(null);
-  const [biconomyAddress, setBiconomyAddress] =
-    useState("");
+  const [biconomyAddress, setBiconomyAddress] = useState("");
   const [isFarmer, setIsFarmer] = useState(false);
   const [coinContract, setCoinContract] = useState(null);
-  const { address } = useAccount();
+  const { address, isConnected } = useAccount();
   const { open, close } = useWeb3Modal();
+  const { disconnect } = useDisconnect();
 
   useEffect(() => {
     let configureLogin;
@@ -66,9 +60,7 @@ export default function Home() {
         "http://localhost:3000/"
       );
       await socialLoginSDK.init({
-        chainId: ethers.utils
-          .hexValue(ChainId.POLYGON_MUMBAI)
-          .toString(),
+        chainId: ethers.utils.hexValue(ChainId.POLYGON_MUMBAI).toString(),
         network: "testnet",
         whitelistUrls: {
           "http://localhost:3000/": signature1,
@@ -104,18 +96,12 @@ export default function Home() {
       let biconomySmartAccount = new BiconomySmartAccount(
         biconomySmartAccountConfig
       );
-      biconomySmartAccount =
-        await biconomySmartAccount.init();
-      setBiconomyAddress(
-        await biconomySmartAccount.getSmartAccountAddress()
-      );
+      biconomySmartAccount = await biconomySmartAccount.init();
+      setBiconomyAddress(await biconomySmartAccount.getSmartAccountAddress());
       setSmartAccount(biconomySmartAccount);
       setLoading(false);
     } catch (err) {
-      console.log(
-        "error setting up smart account... ",
-        err
-      );
+      console.log("error setting up smart account... ", err);
     }
   }
 
@@ -133,11 +119,7 @@ export default function Home() {
 
   const checkUserStatus = async () => {
     console.log("checking user status");
-    const contract = new ethers.Contract(
-      contractAddress,
-      abi,
-      provider
-    );
+    const contract = new ethers.Contract(contractAddress, abi, provider);
     setCoinContract(contract);
     const isAFarmer = await contract.isAFarmer(address);
     setIsFarmer(isAFarmer);
@@ -150,16 +132,9 @@ export default function Home() {
 
     // check if wallet has the nft
     if (address) {
-      const nftAddress =
-        "0x91f11545c176Ca65C1D6156daA9AbA5Fb95f3C9d";
-      const provider = new ethers.providers.Web3Provider(
-        window.ethereum
-      );
-      const nftContract = new ethers.Contract(
-        nftAddress,
-        nftAbi,
-        provider
-      );
+      const nftAddress = "0x91f11545c176Ca65C1D6156daA9AbA5Fb95f3C9d";
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const nftContract = new ethers.Contract(nftAddress, nftAbi, provider);
 
       nftContract.balanceOf(address).then((balance) => {
         if (balance.gt(0)) {
@@ -170,6 +145,14 @@ export default function Home() {
       });
     }
   }, [biconomyAddress, provider, address]);
+
+  const onClickModal = () => {
+    if (isConnected) {
+      disconnect();
+    } else {
+      open();
+    }
+  };
 
   return (
     <div className='connect-container'>
@@ -182,12 +165,15 @@ export default function Home() {
           Sign in with email
         </button>
       )}
-      <button
-        className={styles.walletConnect}
-        onClick={() => open()}
-      >
-        Connect Wallet
-      </button>
+      {isConnected ? (
+        <button onClick={() => onClickModal()} className={styles.walletConnect}>
+          disconnect
+        </button>
+      ) : (
+        <button className={styles.walletConnect} onClick={() => onClickModal()}>
+          Connect Wallet
+        </button>
+      )}
     </div>
   );
 }

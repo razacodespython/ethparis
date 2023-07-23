@@ -1,7 +1,9 @@
+import styles from "@/styles/Profile.module.css";
+
 export default function Header() {
-    return (
-        <div>
-            <h1>Wala</h1>
-        </div>
-    );
+  return (
+    <div className={styles.heading}>
+      <h1>WALA</h1>
+    </div>
+  );
 }

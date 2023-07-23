@@ -3,14 +3,11 @@ import Card from "@/component/Card";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import { useAccount } from "wagmi";
-import style from "../styles/Home.module.css";
+import styles from "../styles/Home.module.css";
 
 export default function Home() {
   const AppDynamic = dynamic(
-    () =>
-      import("../component/WalletConnect").then(
-        (res) => res.default
-      ),
+    () => import("../component/WalletConnect").then((res) => res.default),
     {
       ssr: false,
     }
@@ -33,44 +30,40 @@ export default function Home() {
     console.log(data);
   };
   return (
-    <section className="hero-section">
-      <div className="wrapper">
-        <header className="header">
-          <div className="left-container">
-            <h1 className="h1">Fueling Loyalty</h1>
-            <p>
-              Pay for your community’s gas fees with gift
-              cards.
-            </p>
-            <div className="ctas-container">
-              <Suspense fallback={<div>Loading...</div>}>
-                <AppDynamic />
-              </Suspense>
+    <>
+      <h1 className={styles.heroHeader}> WALA </h1>
+      <section className='hero-section'>
+        <div className='wrapper'>
+          <header className='header'>
+            <div className='left-container'>
+              <h1 className='h1'>Fueling Loyalty</h1>
+              <p>Pay for your community’s gas fees with gift cards.</p>
+              <div className='ctas-container'>
+                <Suspense fallback={<div>Loading...</div>}>
+                  <AppDynamic />
+                </Suspense>
+              </div>
             </div>
-          </div>
-          <div className="right-container">
-            <Card />
-          </div>
-        </header>
-        <div className="bottom">
-          <div className="left-container">
-            <div className="hero-bear-container">
-              <img
-                className="hero-bear"
-                src="../assets/Bear.png"
-                alt=""
-              />
+            <div className='right-container'>
+              <Card />
             </div>
-          </div>
-          <div className="right-container">
-            <ul>
-              <li>✅ Reward your most loyal members</li>
-              <li>✅ Engage with your community</li>
-              <li>✅ Provide a public good</li>
-            </ul>
+          </header>
+          <div className='bottom'>
+            <div className='left-container'>
+              <div className='hero-bear-container'>
+                <img className='hero-bear' src='../assets/Bear.png' alt='' />
+              </div>
+            </div>
+            <div className='right-container'>
+              <ul>
+                <li>✅ Reward your most loyal members</li>
+                <li>✅ Engage with your community</li>
+                <li>✅ Provide a public good</li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
