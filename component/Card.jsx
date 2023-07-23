@@ -20,7 +20,9 @@ export default function Card() {
           </p>
         </div>
       </div>
-      <div className='qrcontainer'></div>
+      <div className='qrcontainer'>
+        <img src='../qrcode.png' alt='' />
+      </div>
     </div>
   );
 }
