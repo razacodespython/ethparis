@@ -32,7 +32,11 @@ h6 {
   font-family: var(--font-press-start), cursive;
 }
 
-h2, h3, h4, h5, p {
+h2,
+h3,
+h4,
+h5,
+p {
   font-family: var(--font-inter), sans-serif;
 }
 
@@ -204,8 +208,9 @@ section.hero-section > .wrapper > .bottom > .right-container > ul {
   flex-direction: column;
 }
 
-.card .title {
+.title {
   display: flex;
+  font-family: var(--font-press-start), cursive;
 }
 
 .card h4 {
@@ -221,7 +226,11 @@ section.hero-section > .wrapper > .bottom > .right-container > ul {
   min-height: 80px;
   max-width: 80px;
   max-height: 80px;
-  background-color: red;
+  border-radius: 5px;
+}
+
+.logo {
+  border-radius: 5px;
 }
 
 .card .description {
