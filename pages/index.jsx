@@ -21,9 +21,15 @@ export default function Home() {
     body: JSON.stringify(address)
   }
 
-  const paymaster = async() =>{
-    console.log("clicked");
+  const gift = async() =>{
+    console.log("clicked gift");
     const response = await fetch("/api/gift",options);
+    const data = await response.json();
+    console.log(data)
+  }
+  const paymaster = async() =>{
+    console.log("clicked paymaster");
+    const response = await fetch("/api/paymaster",options);
     const data = await response.json();
     console.log(data)
   }

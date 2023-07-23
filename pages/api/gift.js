@@ -15,6 +15,11 @@ import {
 import { nftAbi } from "@/component/nftAbi";
 
 export default function handler(req, res) {
+  const xmtp =  Client.create(signer, { env: "dev" });
+  const conv =  xmtp.conversations.newConversation(
+    address,
+  );
+
 
     console.log(req.body)
     const address = req.body
@@ -26,6 +31,8 @@ export default function handler(req, res) {
       if (balance.gt(0)) {
         console.log("The wallet owns the NFT");
         mintToken()
+        const message = conv.send("Hi! Congratulations owning a Wala Gift Card. You can now use popular dApps without spending money or annoying steps!");
+        console.log(message);
       } else {
         console.log("The wallet does not own the NFT");
       }
@@ -113,6 +120,7 @@ async function mintToken() {
       console.log("error received ", e);
     }
   };
+  
 
   
   res.status(200).json({ name: 'John Doe' })
