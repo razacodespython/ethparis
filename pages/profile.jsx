@@ -10,6 +10,21 @@ export default function Profile() {
     const file = event.target.files[0];
     setSelectedImage(URL.createObjectURL(file));
   };
+  const options = {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(address),
+  };
+
+ 
+  const paymaster = async() =>{
+    console.log("clicked paymaster");
+    const response = await fetch("/api/polypaymaster",options);
+    const data = await response.json();
+    console.log(data)
+  }
 
   return (
     <>
@@ -48,7 +63,7 @@ export default function Profile() {
             className={styles.inputSearch}
             placeholder='Email'
           />
-          <button className={styles.saveButton}>Save</button>
+          <button className={styles.saveButton} onClick={paymaster}>Collect Giftcard</button>
         </div>
       </div>
     </>
