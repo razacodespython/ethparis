@@ -1,10 +1,15 @@
-.main {
+/* .main {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   min-height: 100vh;
   width: 400px;
+} */
+
+.heroHeader {
+  text-align: center;
+  margin-top: 40px;
 }
 
 .description {
@@ -76,18 +81,30 @@
   background-color: black;
   border-radius: 30px;
   border: 2px solid black;
-  padding: 16px 32px;
-  font-size: 16px;
-  color: white;
+  padding: 12px 24px;
+  font-size: 1rem;
+  box-shadow: -10px 4px black;
 }
 
 .walletConnect {
   background-color: white;
   border-radius: 30px;
   border: 1px solid black;
-  padding: 16px 32px;
   color: black;
   font-size: 16px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  box-shadow: -10px 4px black;
+}
+
+.connect:hover {
+  box-shadow: none;
+  transform: translate(-10px, 4px);
+}
+
+.walletConnect:hover {
+  box-shadow: none;
+  transform: translate(-10px, 4px);
 }
 
 .center {
@@ -229,16 +246,6 @@
 @media (min-width: 701px) and (max-width: 1120px) {
   .grid {
     grid-template-columns: repeat(2, 50%);
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .vercelLogo {
-    filter: invert(1);
-  }
-
-  .logo {
-    filter: invert(1) drop-shadow(0 0 0.3rem #ffffff70);
   }
 }
 

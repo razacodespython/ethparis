@@ -14,7 +14,7 @@ import abi from "../utils/abi.json";
 import { nftAbi } from "@/component/nftAbi";
 import { Web3Button, useWeb3Modal } from "@web3modal/react";
 import styles from "@/styles/Home.module.css";
-import { useAccount } from "wagmi";
+import { useAccount, useDisconnect } from "wagmi";
 
 const contractAddress = "0x61ec475c64c5042a6Cbb7763f89EcAe745fc8315";
 
@@ -37,8 +37,9 @@ export default function Home() {
   const [biconomyAddress, setBiconomyAddress] = useState("");
   const [isFarmer, setIsFarmer] = useState(false);
   const [coinContract, setCoinContract] = useState(null);
-  const { address } = useAccount();
+  const { address, isConnected } = useAccount();
   const { open, close } = useWeb3Modal();
+  const { disconnect } = useDisconnect();
 
   useEffect(() => {
     let configureLogin;
@@ -145,22 +146,34 @@ export default function Home() {
     }
   }, [biconomyAddress, provider, address]);
 
+  const onClickModal = () => {
+    if (isConnected) {
+      disconnect();
+    } else {
+      open();
+    }
+  };
+
   return (
-    <>
-      <main className={styles.main}>
-        {smartAccount ? (
-          <button onClick={logout} className={styles.connect}>
-            Logout
-          </button>
-        ) : (
-          <button onClick={login} className={styles.connect}>
-            Sign in with email
-          </button>
-        )}
-        <button className={styles.walletConnect} onClick={() => open()}>
+    <div className='connect-container'>
+      {smartAccount ? (
+        <button onClick={logout} className={styles.connect}>
+          Logout
+        </button>
+      ) : (
+        <button onClick={login} className={styles.connect}>
+          Sign in with email
+        </button>
+      )}
+      {isConnected ? (
+        <button onClick={() => onClickModal()} className={styles.walletConnect}>
+          disconnect
+        </button>
+      ) : (
+        <button className={styles.walletConnect} onClick={() => onClickModal()}>
           Connect Wallet
         </button>
-      </main>
-    </>
+      )}
+    </div>
   );
 }
