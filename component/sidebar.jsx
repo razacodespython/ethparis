@@ -4,10 +4,10 @@ import Link from "next/link";
 
 export default function Sidebar() {
   const router = useRouter();
-  const routes = ["/profile", "/gift", "/marketplace", "/messages"];
+  const routes = ["/profile", "/dashboard", "/marketplace", "/messages"];
   const icons = [
     { src: "/profile.png", alt: "profile icon" },
-    { src: "/gift.svg", alt: "gift icon" },
+    { src: "/graph.png", alt: "graph icon" },
     { src: "/squares.svg", alt: "squares icon" },
     { src: "/message-rounded.png", alt: "message icon" },
   ];
