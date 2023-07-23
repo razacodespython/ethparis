@@ -135,19 +135,30 @@ section.hero-section
   > .header
   > .left-container
   > p {
-  font-size: clamp(1.5rem, 5vw, 2.5rem);
-  max-width: 10ch;
-}
-
-section.hero-section
-  > .wrapper
-  > .header
-  > .left-container
-  > p {
   font-size: clamp(1.5rem, 2vw, 2.5rem);
   max-width: 20ch;
   margin-bottom: 2.5rem;
 }
+
+@media (max-width: 400px) {
+  section.hero-section
+  > .wrapper
+  > .header
+  > .left-container
+  > h1 {
+    text-align: center;
+  }
+  section.hero-section
+  > .wrapper
+  > .header
+  > .left-container
+  > p {
+    text-align: center;
+    width: 100%;
+    max-width: 35ch;
+  }
+}
+
 
 section.hero-section > .wrapper > .bottom {
   margin-top: 64px;
