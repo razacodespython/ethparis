@@ -1,6 +1,7 @@
-import style from "../styles/Dashboard.module.css";
+import styles from "../styles/Dashboard.module.css";
 import Sidebar from "@/component/sidebar";
 import Header from "@/component/Header";
+import Image from "next/image";
 
 export default function Dashboard() {
   const giftCardsClaimed = 420;
@@ -11,19 +12,27 @@ export default function Dashboard() {
     <>
       <Header />
       <Sidebar />
-      <div className={style.dashboard}>
-        <div className={style.dataRect}>
+      <div className={styles.dashboard}>
+        <div className={styles.dataRect}>
           <h2>Gift Cards Claimed</h2>
           <p>{giftCardsClaimed}</p>
         </div>
-        <div className={style.dataRect}>
+        <div className={styles.dataRect}>
           <h2>Number of Cards Left</h2>
           <p>{numberOfCardsLeft}</p>
         </div>
-        <div className={style.dataRect}>
+        <div className={styles.dataRect}>
           <h2>Daily Usage</h2>
           <p>{dailyUsage}</p>
         </div>
+      </div>
+      <div className={styles.chart}>
+        <Image
+          src='/assets/linechart.png'
+          alt='line chart'
+          layout='fill'
+          objectFit='contain'
+        />
       </div>
     </>
   );
